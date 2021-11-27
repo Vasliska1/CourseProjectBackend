@@ -1,7 +1,7 @@
 package ifmo.ru.CourceWorkBackEnd.filter;
 
-import ifmo.ru.CourceWorkBackEnd.service.autorization.CustomUserDetails;
-import ifmo.ru.CourceWorkBackEnd.service.autorization.CustomUserDetailsService;
+import ifmo.ru.CourceWorkBackEnd.service.auto.CustomUserDetails;
+import ifmo.ru.CourceWorkBackEnd.service.auto.CustomUserDetailsService;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,4 +1,4 @@
-package ifmo.ru.CourceWorkBackEnd.service.autorization;
+package ifmo.ru.CourceWorkBackEnd.service.auto;
 
 import ifmo.ru.CourceWorkBackEnd.model.Role;
 import ifmo.ru.CourceWorkBackEnd.model.User;
