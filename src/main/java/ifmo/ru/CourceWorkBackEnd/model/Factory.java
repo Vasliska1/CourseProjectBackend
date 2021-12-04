@@ -11,7 +11,7 @@ import java.util.Set;
 public class Factory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "district_id", referencedColumnName = "id")

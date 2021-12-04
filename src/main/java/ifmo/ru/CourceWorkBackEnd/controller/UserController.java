@@ -6,6 +6,8 @@ import ifmo.ru.CourceWorkBackEnd.filter.JwtProvider;
 import ifmo.ru.CourceWorkBackEnd.model.User;
 import ifmo.ru.CourceWorkBackEnd.service.auto.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,12 +25,12 @@ public class UserController {
     private JwtProvider jwtProvider;
 
     @PostMapping("/register")
-    public String registerUser(@RequestBody @Valid UserDTO userDTO) {
+    public ResponseEntity<String> registerUser(@RequestBody @Valid UserDTO userDTO) {
         User u = new User();
         u.setPassword(userDTO.getPassword());
         u.setLogin(userDTO.getLogin());
         userService.saveUser(u);
-        return "OK";
+        return new ResponseEntity<>("Ok", HttpStatus.CREATED);
     }
 
     @PostMapping("/login")

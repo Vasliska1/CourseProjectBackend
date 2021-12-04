@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String subscription_kind_;
 }

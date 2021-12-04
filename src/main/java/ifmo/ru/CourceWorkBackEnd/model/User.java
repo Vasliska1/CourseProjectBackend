@@ -13,7 +13,7 @@ import java.util.Collection;
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "login", unique = true)
     private String login;

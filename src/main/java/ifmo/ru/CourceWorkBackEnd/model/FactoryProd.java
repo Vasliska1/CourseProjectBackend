@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class FactoryProd {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "factory_id", referencedColumnName = "id")

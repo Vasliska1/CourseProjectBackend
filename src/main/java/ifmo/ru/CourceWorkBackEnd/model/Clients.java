@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Clients {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -28,4 +28,13 @@ public class Clients {
     @JoinColumn(name = "subscription_id", referencedColumnName = "id")
     private Subscription subscription;
 
+    public Clients(Human id_human, Location id_delivery_place, Subscription id_subscription, User id_user) {
+        this.human = id_human;
+        this.location = id_delivery_place;
+        this.subscription = id_subscription;
+        this.user = id_user;
+    }
+
+    public Clients() {
+    }
 }
