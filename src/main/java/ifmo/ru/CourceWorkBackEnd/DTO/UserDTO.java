@@ -9,4 +9,6 @@ public class UserDTO {
     private String login;
     @NotEmpty
     private String password;
+
+    private String role;
 }

@@ -18,8 +18,8 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User saveUser(User userEntity) {
-        Role userRole = roleEntityRepository.findByName("ROLE_USER");
+    public User saveUser(User userEntity, String role) {
+        Role userRole = roleEntityRepository.findByName(role);
         userEntity.setRoleEntity(userRole);
         userEntity.setPassword(passwordEncoder.encode(userEntity.getPassword()));
         return userEntityRepository.save(userEntity);

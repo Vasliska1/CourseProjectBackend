@@ -26,17 +26,25 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody @Valid UserDTO userDTO) {
+        if (userService.findByLogin(userDTO.getLogin()) != null) {
+            return new ResponseEntity<>("Такой пользователь уже есть!", HttpStatus.CONFLICT);
+        }
         User u = new User();
+        System.out.println(u);
         u.setPassword(userDTO.getPassword());
         u.setLogin(userDTO.getLogin());
-        userService.saveUser(u);
-        return new ResponseEntity<>("Ok", HttpStatus.CREATED);
+        userService.saveUser(u, userDTO.getRole());
+        return new ResponseEntity<>("Ok", HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public AuthResponse auth(@RequestBody UserDTO request) {
-        User userEntity = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
-        String token = jwtProvider.generateToken(userEntity.getLogin());
-        return new AuthResponse(token);
+    public ResponseEntity<String> auth(@RequestBody UserDTO request) {
+        try {
+            User userEntity = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
+            String token = jwtProvider.generateToken(userEntity.getLogin());
+            return new ResponseEntity<>(token, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>("Неверный логин или пароль", HttpStatus.UNAUTHORIZED);
+        }
     }
 }

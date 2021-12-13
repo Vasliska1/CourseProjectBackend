@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface DistrictRepository  extends JpaRepository<District, Integer> {
 
-    @Query("select * from district where city_id = :id order by name")
-    List<District> getNamebyCity(@Param("id") int city);
+    @Query(value = "select name from district where city_id = :id order by name",  nativeQuery = true)
+    List<String> getNamebyCity(@Param("id") int city);
 
     District findById(int id);
 }

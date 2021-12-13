@@ -1,7 +1,6 @@
 package ifmo.ru.CourceWorkBackEnd.controller;
 
 
-import ifmo.ru.CourceWorkBackEnd.model.Human;
 import ifmo.ru.CourceWorkBackEnd.repository.CityRepository;
 import ifmo.ru.CourceWorkBackEnd.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController("/location")
+@RestController
 @CrossOrigin
 public class LocationController {
 
@@ -31,8 +30,9 @@ public class LocationController {
     }
 
     @GetMapping("/districts")
-    public ResponseEntity<?> getDisctrictsByCity(@RequestBody String name){
-        return ResponseEntity.ok(locationService.getDistrictByCity(name));
+    public ResponseEntity<?> getDisctrictsByCity(@RequestParam("city") String city){
+        System.out.println(city);
+        return ResponseEntity.ok(locationService.getDistrictsByCity(city));
     }
 
 }

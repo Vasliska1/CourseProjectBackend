@@ -3,6 +3,7 @@ server:
   servlet:
     context-path:
 spring:
+
   jpa:
     show-sql: true
     properties:
@@ -14,7 +15,8 @@ spring:
     generate-ddl: true
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/studs
-    username: s285614
-    password: fzd150
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+
 

@@ -21,4 +21,7 @@ public class HumanService {
     public Human getById(int id){
        return humanRepository.getOne(id);
     }
+    public Human getByNumber(String number){
+        return humanRepository.findbyPhone(number);
+    }
 }

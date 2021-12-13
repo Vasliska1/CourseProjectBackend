@@ -1,8 +1,6 @@
 package ifmo.ru.CourceWorkBackEnd.controller;
 
 
-import ifmo.ru.CourceWorkBackEnd.DTO.ClientDTO;
-import ifmo.ru.CourceWorkBackEnd.DTO.UserDTO;
 import ifmo.ru.CourceWorkBackEnd.model.*;
 import ifmo.ru.CourceWorkBackEnd.repository.LocationRepository;
 import ifmo.ru.CourceWorkBackEnd.repository.SubscriptionRepository;
@@ -15,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.security.Principal;
 
 @RestController
@@ -41,14 +38,25 @@ public class ClientController {
     private LocationService locationService;
 
     @PostMapping("/client")
-    public ResponseEntity<String> addClient(@RequestBody Human human, int idDistr, String addres, Principal principal) {
+    public ResponseEntity<String> addClient(Principal principal, @RequestBody Human human,
+                                            @RequestParam("city") String city,
+                                            @RequestParam("district") String distr,
+                                            @RequestParam("address") String address) {
+        System.out.println(human);
+        System.out.println(city);
+        System.out.println(distr);
+        System.out.println(address);
+        if (humanService.getByNumber(human.getPhone_number()) != null) {
+            return new ResponseEntity<>("Такой номер телефона уже существует", HttpStatus.CONFLICT);
+        }
         humanService.saveHuman(human);
+        System.out.println(principal.getName());
         User n_user = userService.findByLogin(principal.getName());
-        District district = locationService.getDistrictById(idDistr);
-        Location location = new Location(district, addres);
+        District district = locationService.getDistrictByNameAndCity(city, distr);
+        Location location = new Location(district, address);
         locationRepository.save(location);
         Clients clients = new Clients(human, location, subscription.getOne(1), n_user);
         clientService.saveClients(clients);
-        return new ResponseEntity<>("Save", HttpStatus.CREATED);
+        return new ResponseEntity<>("Save", HttpStatus.OK);
     }
 }

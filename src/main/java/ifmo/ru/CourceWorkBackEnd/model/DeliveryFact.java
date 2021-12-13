@@ -14,11 +14,11 @@ public class DeliveryFact {
     private Integer id;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "deliveryman_id", referencedColumnName = "id")
     private DeliveryMan deliveryMan;
 

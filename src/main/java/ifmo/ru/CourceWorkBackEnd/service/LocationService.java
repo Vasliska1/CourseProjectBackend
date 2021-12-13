@@ -17,13 +17,14 @@ public class LocationService {
     @Autowired
     private CityRepository cityRepository;
 
-    public List<District> getDistrictByCity(String nameCity){
+    public List<String> getDistrictsByCity(String nameCity) {
         int city = cityRepository.findByName(nameCity).getId();
         return districtRepository.getNamebyCity(city);
     }
 
-    public District getDistrictById(int id){
-
-       return districtRepository.findById(id);
+    public District getDistrictByNameAndCity(String cityName, String nameDistr) {
+        int city = cityRepository.findByName(cityName).getId();
+        return districtRepository.findById(city);
     }
+
 }

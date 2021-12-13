@@ -12,11 +12,11 @@ public class FactoryProd {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "factory_id", referencedColumnName = "id")
     private Factory factory;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "antistress_id", referencedColumnName = "id")
     private Antistress antistress;
 

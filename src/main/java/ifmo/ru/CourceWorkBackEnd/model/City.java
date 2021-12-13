@@ -14,7 +14,7 @@ public class City {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "stress_id", referencedColumnName = "id")
     private Stress stress;
 }
