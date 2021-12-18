@@ -15,6 +15,7 @@ public class Stress {
 
     private String stress;
 
-    @ManyToMany(mappedBy = "stresses")
-    private List<Antistress> antistresses;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "antistress_id", referencedColumnName = "id")
+    private Antistress antistress;
 }

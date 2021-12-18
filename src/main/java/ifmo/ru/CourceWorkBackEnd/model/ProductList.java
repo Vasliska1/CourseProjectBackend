@@ -21,4 +21,10 @@ public class ProductList {
     private Antistress antistress;
 
     private int count_;
+
+    public ProductList(Order order, Antistress antistress, int count_) {
+        this.order = order;
+        this.antistress = antistress;
+        this.count_ = count_;
+    }
 }

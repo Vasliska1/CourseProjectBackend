@@ -1,6 +1,8 @@
 package ifmo.ru.CourceWorkBackEnd.service;
 
+import ifmo.ru.CourceWorkBackEnd.model.Clients;
 import ifmo.ru.CourceWorkBackEnd.model.District;
+import ifmo.ru.CourceWorkBackEnd.model.Factory;
 import ifmo.ru.CourceWorkBackEnd.repository.CityRepository;
 import ifmo.ru.CourceWorkBackEnd.repository.DistrictRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +28,6 @@ public class LocationService {
         int city = cityRepository.findByName(cityName).getId();
         return districtRepository.findById(city);
     }
+
 
 }
