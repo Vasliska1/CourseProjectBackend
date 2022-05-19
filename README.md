@@ -1,3 +1,3 @@
-# Course project backend
+# Backend for pop-it online shop
 ## Java Spring
-### Пожалуйста, не смотрите это!!!!
+
