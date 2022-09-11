@@ -14,14 +14,15 @@ public class HumanService {
         this.humanRepository = humanRepository;
     }
 
-    public void saveHuman(Human human){
+    public void saveHuman(Human human) {
         humanRepository.save(human);
     }
 
-    public Human getById(int id){
-       return humanRepository.getOne(id);
+    public Human getById(int id) {
+        return humanRepository.getOne(id);
     }
-    public Human getByNumber(String number){
+
+    public Human getByNumber(String number) {
         return humanRepository.findbyPhone(number);
     }
 }

@@ -20,21 +20,20 @@ public class ClientService {
     @Autowired
     private FactoryRepository factoryRepository;
 
-        public void saveClients(Clients clients) {
-            clientsRepository.save(clients);
-        }
+    public void saveClients(Clients clients) {
+        clientsRepository.save(clients);
+    }
 
-    public Factory getFabric(Clients client){
+    public Factory getFabric(Clients client) {
 
         District district = client.getLocation().getDistrict();
         Factory factory = factoryRepository.getFactoryByDistrict(district.getId());
         return factory;
     }
 
-    public Clients getClientByUser(int id){
+    public Clients getClientByUser(int id) {
         return clientsRepository.getClientbyUser(id);
     }
-
 
 
 }

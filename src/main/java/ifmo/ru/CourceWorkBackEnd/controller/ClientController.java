@@ -46,10 +46,6 @@ public class ClientController {
                                             @RequestParam("city") String city,
                                             @RequestParam("district") String distr,
                                             @RequestParam("address") String address) {
-        System.out.println(human);
-        System.out.println(city);
-        System.out.println(distr);
-        System.out.println(address);
         try {
             if (humanService.getByNumber(human.getPhone_number()) != null) {
                 return new ResponseEntity<>("Такой номер телефона уже существует", HttpStatus.CONFLICT);
@@ -60,10 +56,10 @@ public class ClientController {
             District district = locationService.getDistrictByNameAndCity(city, distr);
             Location location = new Location(district, address);
             locationRepository.save(location);
-            if(n_user.getRoleEntity().getName().equals("ROLE_USER")){
-            Clients clients = new Clients(human, location, subscription.getOne(1), n_user);
-            clientService.saveClients(clients);}
-            else{
+            if (n_user.getRoleEntity().getName().equals("ROLE_USER")) {
+                Clients clients = new Clients(human, location, subscription.getOne(1), n_user);
+                clientService.saveClients(clients);
+            } else {
                 DeliveryMan deliveryMan = new DeliveryMan(human, district, null, n_user);
                 deliveryService.saveDeliveryMan(deliveryMan);
             }

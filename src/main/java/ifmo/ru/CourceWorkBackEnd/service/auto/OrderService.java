@@ -28,14 +28,14 @@ public class OrderService {
         return factoryProductionRepository.getCount(factory, antistress.getId());
     }
 
-    public Order saveOrder(Clients client, Factory factory){
-        int priority = client.getSubscription().getId() +1;
-        Order order = new Order(client, LocalDate.now(),factory,priority);
+    public Order saveOrder(Clients client, Factory factory) {
+        int priority = client.getSubscription().getId() + 1;
+        Order order = new Order(client, LocalDate.now(), factory, priority);
         return orderRepository.save(order);
 
     }
 
-    public void saveProductList(Antistress antistress, Order order, int count){
+    public void saveProductList(Antistress antistress, Order order, int count) {
         ProductList productList = new ProductList(order, antistress, count);
         productListRepository.save(productList);
     }

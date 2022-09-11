@@ -40,7 +40,7 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<String> auth(@RequestBody UserDTO request) {
         try {
-            User userEntity = userService.  findByLoginAndPassword(request.getLogin(), request.getPassword());
+            User userEntity = userService.findByLoginAndPassword(request.getLogin(), request.getPassword());
             String token = jwtProvider.generateToken(userEntity.getLogin());
             return new ResponseEntity<>(token, HttpStatus.OK);
         } catch (Exception e) {

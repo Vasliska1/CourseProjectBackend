@@ -27,22 +27,23 @@ public class DeliveryService {
         return deliveryManRepository.getDeliverybyUser(userId);
     }
 
-    public List<DeliveryFact> getCurrDeliv(int delivId){
+    public List<DeliveryFact> getCurrDeliv(int delivId) {
 
         return deliveryFactRepository.getCurrDeliv(delivId);
 
     }
-    public List<DeliveryFact> getDoneDeliv(int delivId){
 
-    return deliveryFactRepository.getDoneDeliv(delivId);
+    public List<DeliveryFact> getDoneDeliv(int delivId) {
+
+        return deliveryFactRepository.getDoneDeliv(delivId);
     }
 
-    public List<ProductList> getProductByOrder(int orderId){
+    public List<ProductList> getProductByOrder(int orderId) {
 
         return productListRepository.getOrderProduct(orderId);
     }
 
-    public void changeFactDelivery(int id){
+    public void changeFactDelivery(int id) {
         deliveryFactRepository.changeFact(id);
     }
 

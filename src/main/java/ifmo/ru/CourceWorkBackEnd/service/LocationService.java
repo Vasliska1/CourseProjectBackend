@@ -28,6 +28,4 @@ public class LocationService {
         int city = cityRepository.findByName(cityName).getId();
         return districtRepository.findByIdCityAndName(city, nameDistr);
     }
-
-
 }
