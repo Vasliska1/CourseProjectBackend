@@ -26,7 +26,7 @@ public class LocationService {
 
     public District getDistrictByNameAndCity(String cityName, String nameDistr) {
         int city = cityRepository.findByName(cityName).getId();
-        return districtRepository.findById(city);
+        return districtRepository.findByIdCityAndName(city, nameDistr);
     }
 
 

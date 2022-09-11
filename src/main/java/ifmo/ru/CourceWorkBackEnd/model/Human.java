@@ -18,7 +18,4 @@ public class Human {
     private String surname;
 
     private String phone_number;
-
-    @ManyToMany(mappedBy = "humans")
-    private List<Factory> factories;
 }

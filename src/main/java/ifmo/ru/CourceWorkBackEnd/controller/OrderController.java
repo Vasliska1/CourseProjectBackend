@@ -3,10 +3,7 @@ package ifmo.ru.CourceWorkBackEnd.controller;
 import ifmo.ru.CourceWorkBackEnd.DTO.AntistressDTO;
 import ifmo.ru.CourceWorkBackEnd.DTO.ListProduct;
 import ifmo.ru.CourceWorkBackEnd.DTO.ProductDTO;
-import ifmo.ru.CourceWorkBackEnd.model.Antistress;
-import ifmo.ru.CourceWorkBackEnd.model.Clients;
-import ifmo.ru.CourceWorkBackEnd.model.Factory;
-import ifmo.ru.CourceWorkBackEnd.model.Order;
+import ifmo.ru.CourceWorkBackEnd.model.*;
 import ifmo.ru.CourceWorkBackEnd.repository.AntistressRepository;
 import ifmo.ru.CourceWorkBackEnd.service.ClientService;
 import ifmo.ru.CourceWorkBackEnd.service.auto.OrderService;
@@ -16,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -75,6 +73,15 @@ public class OrderController {
         } else {
             return new ResponseEntity<>(listProductResponse, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/bestPopit")
+    public ResponseEntity<?> getBestPopit(Principal principal) {
+
+        Clients client = clientService.getClientByUser(userService.findByLogin(principal.getName()).getId());
+        int best = client.getLocation().getDistrict().getCity().getStress().getId();
+        return ResponseEntity.ok(best);
 
     }
 }
+

@@ -24,4 +24,18 @@ public class DeliveryMan {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    public DeliveryMan() {
+    }
+
+    public DeliveryMan(Human human, District district, Car car, User user) {
+        this.human = human;
+        this.district = district;
+        this.car = car;
+        this.user = user;
+    }
 }

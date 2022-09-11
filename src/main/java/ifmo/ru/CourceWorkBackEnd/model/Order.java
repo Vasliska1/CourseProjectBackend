@@ -26,6 +26,8 @@ public class Order {
     private Factory factory;
 
     private int priority;
+    public Order() {
+    }
 
     public Order(Clients clients, LocalDate date_, Factory factory, int priority) {
         this.clients = clients;
@@ -33,4 +35,6 @@ public class Order {
         this.factory = factory;
         this.priority = priority;
     }
+
+
 }

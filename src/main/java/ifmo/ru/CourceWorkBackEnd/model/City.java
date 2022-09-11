@@ -1,13 +1,13 @@
 package ifmo.ru.CourceWorkBackEnd.model;
 
-import lombok.Data;
+import  lombok.Data;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "city")
-public class City {
+public class    City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

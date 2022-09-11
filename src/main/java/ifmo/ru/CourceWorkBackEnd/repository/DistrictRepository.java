@@ -13,5 +13,6 @@ public interface DistrictRepository  extends JpaRepository<District, Integer> {
     @Query(value = "select name from district where city_id = :id order by name",  nativeQuery = true)
     List<String> getNamebyCity(@Param("id") int city);
 
-    District findById(int id);
+    @Query(value = "select * from district where city_id = :id and name= :name",  nativeQuery = true)
+    District findByIdCityAndName(@Param("id") int id, @Param("name") String name);
 }

@@ -22,6 +22,9 @@ public class ProductList {
 
     private int count_;
 
+    public ProductList() {
+    }
+
     public ProductList(Order order, Antistress antistress, int count_) {
         this.order = order;
         this.antistress = antistress;

@@ -20,9 +20,9 @@ public class ClientService {
     @Autowired
     private FactoryRepository factoryRepository;
 
-    public void saveClients(Clients clients) {
-        clientsRepository.save(clients);
-    }
+        public void saveClients(Clients clients) {
+            clientsRepository.save(clients);
+        }
 
     public Factory getFabric(Clients client){
 
@@ -34,6 +34,7 @@ public class ClientService {
     public Clients getClientByUser(int id){
         return clientsRepository.getClientbyUser(id);
     }
+
 
 
 }
